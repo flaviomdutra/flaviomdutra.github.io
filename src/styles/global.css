@@ -88,7 +88,7 @@ nav {
   width: 180px;
   height: 180px;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 4px;
   margin: 0 0 24px 32px;
   border: 1px solid #343b45;
 }
@@ -119,6 +119,10 @@ h2 {
   font-size: 23px;
   letter-spacing: -0.03em;
   margin: 5px 0 18px;
+}
+
+.intro-title {
+  font-size: clamp(30px, 4vw, 38px);
 }
 
 .lead {
