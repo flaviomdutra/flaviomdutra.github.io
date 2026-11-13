@@ -83,6 +83,16 @@ nav {
   padding-bottom: 60px;
 }
 
+.portrait {
+  float: right;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 0 24px 32px;
+  border: 1px solid #343b45;
+}
+
 .prompt,
 .section-number {
   color: #778593;
@@ -217,6 +227,13 @@ p {
 
   .intro-section {
     padding-top: 65px;
+  }
+
+  .portrait {
+    float: none;
+    width: 128px;
+    height: 128px;
+    margin: 0 0 24px;
   }
 
   .post {

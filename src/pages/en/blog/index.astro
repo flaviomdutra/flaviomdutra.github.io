@@ -1,0 +1,23 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+const base = `${import.meta.env.BASE_URL}en/`;
+---
+
+<Layout title="Blog — Flávio Dutra">
+  <div class="wrap content page">
+    <p class="prompt">
+      ~/blog <span>$</span> ls
+    </p>
+    <h1>
+      Blog<span class="accent">.</span>
+    </h1>
+    <p>
+      Notes on software architecture, backend engineering, distributed systems,
+      and learning along the way.
+    </p>
+    <a class="post" href={`${base}blog/microservice-coupling/`}>
+      <span>Understanding coupling in microservices</span>
+      <span>Architecture →</span>
+    </a>
+  </div>
+</Layout>

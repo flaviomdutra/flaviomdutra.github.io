@@ -1,109 +1,117 @@
 ---
 layout: ../../layouts/Layout.astro
-title: Understanding coupling in microservices — Flávio Dutra
+title: Entendendo o acoplamento em microsserviços — Flávio Dutra
 description:
-  A practical guide to the forms of coupling that shape distributed systems.
+  Um guia prático sobre as formas de acoplamento em sistemas distribuídos.
 ---
 
 <div class="wrap page prose">
 
-# Understanding coupling in microservices
+# Entendendo o acoplamento em microsserviços
 
-Microservices do not eliminate coupling. They move it across process and network
-boundaries, where it can be harder to see. The goal is not to remove every
-dependency, but to make dependencies explicit and keep changes manageable.
+Microsserviços não eliminam o acoplamento. Eles o deslocam para além dos limites
+de processos e redes, onde pode ser mais difícil percebê-lo. O objetivo não é
+remover todas as dependências, mas torná-las explícitas e manter as mudanças
+administráveis.
 
-A useful question is: **what has to change, coordinate, or fail when this
-service changes?** The answer often reveals several kinds of coupling at once.
+Uma pergunta útil é: **o que precisa mudar, se coordenar ou pode falhar quando
+este serviço muda?** A resposta costuma revelar vários tipos de acoplamento ao
+mesmo tempo.
 
-## Domain coupling
+## Acoplamento de domínio
 
-Services are domain-coupled when their responsibilities and business rules
-overlap. For example, if both an order service and a billing service
-independently decide whether an order is eligible for payment, a policy change
-may require coordinated updates.
+Serviços têm acoplamento de domínio quando suas responsabilidades e regras de
+negócio se sobrepõem. Por exemplo, se um serviço de pedidos e outro de
+faturamento decidirem independentemente se um pedido pode ser pago, uma mudança
+na política pode exigir atualizações coordenadas.
 
-Use domain boundaries to give each service clear ownership of its rules. Shared
-business concepts still need agreement, but their behavior should have an
-identifiable owner.
+Use limites de domínio para definir claramente quem é responsável por cada
+regra. Conceitos de negócio compartilhados ainda exigem acordo, mas deve haver
+um responsável identificável por seu comportamento.
 
-## Contract coupling
+## Acoplamento de contrato
 
-Consumers depend on the shape and meaning of an API or event. Renaming a field,
-changing its meaning, or introducing a new mandatory field can break consumers
-even when the producing service deploys successfully.
+Consumidores dependem da estrutura e do significado de uma API ou evento.
+Renomear um campo, mudar seu significado ou introduzir um novo campo obrigatório
+pode quebrar consumidores mesmo quando o serviço produtor é implantado com
+sucesso.
 
-Design contracts for compatibility, document their semantics, and evolve them
-incrementally. Consumer-driven contract tests can help detect incompatible
-changes; they do not replace agreement on business meaning.
+Projete contratos para manter a compatibilidade, documente sua semântica e
+evolua-os gradualmente. Testes de contrato orientados pelo consumidor ajudam a
+detectar mudanças incompatíveis, mas não substituem o acordo sobre o significado
+de negócio.
 
-## Runtime coupling
+## Acoplamento em tempo de execução
 
-A synchronous request creates a runtime dependency: the caller needs another
-service to respond within a useful time. A checkout that waits for inventory,
-pricing, and payment services may become unavailable or slow when any dependency
-struggles.
+Uma requisição síncrona cria uma dependência em tempo de execução: quem chama
+precisa que outro serviço responda em tempo hábil. Um checkout que aguarda
+serviços de estoque, preços e pagamentos pode ficar lento ou indisponível quando
+qualquer uma dessas dependências apresenta problemas.
 
-Use timeouts, bounded retries, circuit breakers, and appropriate fallbacks.
-Asynchronous messaging can reduce simultaneous availability requirements, but it
-introduces other concerns such as delivery guarantees and eventual consistency.
+Use tempos limite, tentativas limitadas, circuit breakers e alternativas
+apropriadas. Mensageria assíncrona pode reduzir a necessidade de disponibilidade
+simultânea, mas introduz outras preocupações, como garantias de entrega e
+consistência eventual.
 
-## Temporal coupling
+## Acoplamento temporal
 
-Temporal coupling occurs when components must be available or act at the same
-time. A direct HTTP call is an obvious example. A durable queue can allow a
-producer and consumer to work at different times, provided delayed processing is
-acceptable.
+O acoplamento temporal ocorre quando componentes precisam estar disponíveis ou
+agir ao mesmo tempo. Uma chamada HTTP direta é um exemplo evidente. Uma fila
+durável pode permitir que produtor e consumidor trabalhem em momentos
+diferentes, desde que o processamento adiado seja aceitável.
 
-Choose the interaction based on the business need: some decisions require an
-immediate response, while others can tolerate a pending state and later
-completion.
+Escolha a interação conforme a necessidade do negócio: algumas decisões exigem
+resposta imediata, enquanto outras toleram um estado pendente e conclusão
+posterior.
 
-## Data coupling
+## Acoplamento de dados
 
-Services become tightly coupled when they share database tables, depend on
-another service's internal schema, or duplicate data without a clear ownership
-and synchronization strategy. A database migration can then affect consumers the
-owning team cannot easily identify.
+Serviços ficam fortemente acoplados quando compartilham tabelas de banco de
+dados, dependem do esquema interno de outro serviço ou duplicam dados sem uma
+estratégia clara de responsabilidade e sincronização. Uma migração de banco pode
+então afetar consumidores que a equipe responsável não consegue identificar
+facilmente.
 
-Give each piece of data a clear owner and expose it through deliberate
-interfaces or events. Replication and read models can be useful, but consumers
-must account for staleness, corrections, and the cost of synchronization.
+Defina um responsável claro para cada dado e exponha-o por interfaces ou eventos
+planejados. Replicação e modelos de leitura podem ser úteis, mas consumidores
+precisam considerar dados desatualizados, correções e o custo de sincronização.
 
-## Deployment coupling
+## Acoplamento de implantação
 
-Deployment coupling appears when multiple services must be released together or
-in a strict order. For example, a producer and all its consumers might need to
-deploy simultaneously because a contract change is incompatible.
+O acoplamento de implantação aparece quando vários serviços precisam ser
+publicados juntos ou em uma ordem rígida. Por exemplo, um produtor e todos os
+seus consumidores podem precisar de implantação simultânea por causa de uma
+mudança incompatível no contrato.
 
-Favor backward-compatible changes and staged migrations: add a new field or
-endpoint, migrate consumers, then remove the old behavior after it is no longer
-needed. Independent deployment is a goal, not proof that services are
-independent in every other respect.
+Prefira mudanças retrocompatíveis e migrações em etapas: adicione um novo campo
+ou endpoint, migre os consumidores e remova o comportamento antigo quando não
+for mais necessário. Implantação independente é um objetivo, não uma prova de
+que os serviços são independentes em todos os outros aspectos.
 
-## Change and organizational coupling
+## Acoplamento de mudança e organizacional
 
-If a small business change routinely requires work across many services and
-teams, the boundaries may not reflect the way the business evolves. Coordination
-itself becomes a delivery cost, even when the services communicate through
-well-designed interfaces.
+Se uma pequena mudança de negócio exige regularmente trabalho em muitos serviços
+e equipes, os limites podem não refletir a maneira como o negócio evolui. A
+própria coordenação passa a ter um custo de entrega, mesmo quando os serviços se
+comunicam por interfaces bem projetadas.
 
-Look at real change history and involve the teams that own the workflow.
-Sometimes the answer is a clearer contract; sometimes responsibilities need to
-move, or a service should be split or consolidated.
+Observe o histórico real de mudanças e envolva as equipes responsáveis pelo
+fluxo. Às vezes, a resposta é um contrato mais claro; em outros casos, é preciso
+mover responsabilidades, dividir ou consolidar um serviço.
 
-## A practical review
+## Uma análise prática
 
-For an important workflow, map its calls, events, data ownership, and team
-boundaries. Then ask:
+Para um fluxo importante, mapeie chamadas, eventos, responsáveis pelos dados e
+limites entre equipes. Depois, pergunte:
 
-- Which dependencies must be available for the workflow to succeed?
-- Which changes require coordinated releases or agreement between teams?
-- Who owns each business rule and source of truth?
-- What happens when messages arrive late, twice, or out of order?
-- Where is temporary inconsistency acceptable, and how is it resolved?
+- Quais dependências precisam estar disponíveis para o fluxo funcionar?
+- Quais mudanças exigem implantações coordenadas ou acordo entre equipes?
+- Quem é responsável por cada regra de negócio e fonte de verdade?
+- O que acontece quando mensagens chegam atrasadas, duplicadas ou fora de ordem?
+- Onde a inconsistência temporária é aceitável e como ela é resolvida?
 
-The right amount of coupling depends on the business capability. Make the
-trade-offs visible, and revisit them as the system and organization change.
+O nível adequado de acoplamento depende da capacidade de negócio. Torne as
+escolhas e suas consequências visíveis e revise-as conforme o sistema e a
+organização evoluem.
 
 </div>

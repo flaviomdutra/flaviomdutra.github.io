@@ -1,0 +1,53 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Setup — Flávio Dutra">
+  <div class="wrap content page">
+    <p class="prompt">
+      ~/setup <span>$</span> cat setup.md
+    </p>
+    <h1>
+      My setup<span class="accent">.</span>
+    </h1>
+    <p>A look at the machine and tools I use for development.</p>
+    <section>
+      <h2>Machine</h2>
+      <table>
+        <tbody>
+          <tr>
+            <th scope="row">Processor</th>
+            <td>AMD Ryzen 7 5700X3D</td>
+          </tr>
+          <tr>
+            <th scope="row">Graphics</th>
+            <td>NVIDIA GeForce RTX 4060 Ti (8 GB)</td>
+          </tr>
+          <tr>
+            <th scope="row">Memory</th>
+            <td>16 GB RAM</td>
+          </tr>
+          <tr>
+            <th scope="row">Storage</th>
+            <td>512 GB</td>
+          </tr>
+          <tr>
+            <th scope="row">Development environment</th>
+            <td>Ubuntu 26.04 LTS on WSL2</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <h2>Tools &amp; dotfiles</h2>
+      <p>
+        My configuration includes Fish, Neovim, and Starship. You can explore
+        the configuration in my{" "}
+        <a class="inline" href="https://github.com/flaviomdutra/dotfiles">
+          dotfiles repository ↗
+        </a>
+        .
+      </p>
+    </section>
+  </div>
+</Layout>

@@ -22,3 +22,10 @@ select **Pages → Build and deployment → GitHub Actions**. The workflow build
 and deploys automatically; it supports both user sites and project repositories.
 For a custom domain, update `SITE_URL` in the workflow and configure the domain
 in GitHub Pages.
+
+## Languages
+
+Portuguese is the default language; English pages live under `/en/`. The
+language switch links equivalent pages, so add matching routes in both languages
+when adding a page or blog post, and update both blog listings. The switch
+assumes that a matching route exists in the other language.
