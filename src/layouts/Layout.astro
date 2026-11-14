@@ -20,6 +20,13 @@ const {
 <html lang={isEnglish ? "en" : "pt-BR"}>
   <head>
     <meta charset="utf-8" />
+    <script is:inline>
+      try {
+        if (localStorage.getItem("theme") === "light") {
+          document.documentElement.dataset.theme = "light";
+        }
+      } catch {}
+    </script>
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
@@ -50,10 +57,50 @@ const {
         </a>
         <a href={`${home}#contact`}>{isEnglish ? "contact" : "contato"}</a>
         <a href={alternate} hreflang={isEnglish ? "pt-BR" : "en"}>
-          {isEnglish ? "Português" : "English"}
+          {isEnglish ? "pt" : "en"}
         </a>
       </nav>
+      <button
+        class="theme-toggle"
+        type="button"
+        data-light-label={
+          isEnglish ? "Switch to light theme" : "Ativar tema claro"
+        }
+        data-dark-label={
+          isEnglish ? "Switch to dark theme" : "Ativar tema escuro"
+        }
+        aria-label={isEnglish ? "Switch to light theme" : "Ativar tema claro"}
+      >
+        <span class="sun" aria-hidden="true">
+          ☀
+        </span>
+        <span class="moon" aria-hidden="true">
+          ☾
+        </span>
+      </button>
     </header>
+    <script>
+      const button = document.querySelector<HTMLButtonElement>(".theme-toggle");
+      const updateLabel = () => {
+        if (!button) return;
+        const light = document.documentElement.dataset.theme === "light";
+        button.setAttribute(
+          "aria-label",
+          (light ? button.dataset.darkLabel : button.dataset.lightLabel) || "",
+        );
+        button.title = button.getAttribute("aria-label") || "";
+      };
+      updateLabel();
+      button?.addEventListener("click", () => {
+        const theme =
+          document.documentElement.dataset.theme === "light" ? "dark" : "light";
+        document.documentElement.dataset.theme = theme;
+        try {
+          localStorage.setItem("theme", theme);
+        } catch {}
+        updateLabel();
+      });
+    </script>
     <main id="main">
       <slot />
     </main>
