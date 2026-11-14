@@ -5,8 +5,8 @@ descriptions are placeholders: replace them with your own before publishing.
 
 ## Development
 
-Requires Node.js 22. Run `npm install`, then `npm run dev`. Run `npm run build`
-to create the static site.
+Requires Node.js 22.23.4 or later. Run `npm ci`, then `npm run dev`. Run
+`npm run build` to create the static site.
 
 Edit the home page in `src/pages/index.astro`, the shared navigation in
 `src/layouts/Layout.astro`, and the journal in `src/pages/blog/`. Update the RSS
