@@ -4,132 +4,83 @@ const base = import.meta.env.BASE_URL;
 ---
 
 <Layout>
-  <div class="wrap content">
-    <section class="intro-section">
+  <div class="wrap content home">
+    <section class="home-intro" id="about">
+      <div class="home-intro-copy">
+        <p class="prompt">
+          ~/home <span>$</span> whoami
+        </p>
+        <h1>Flávio Dutra</h1>
+        <p class="home-lead">
+          No Bradesco, ajudo equipes a modernizar plataformas de recuperação de
+          crédito, conectando serviços em nuvem, sistemas locais e mainframes.
+          Meu trabalho passa por decisões de arquitetura, integração entre
+          sistemas e desenvolvimento próximo às equipes.
+        </p>
+        <p>
+          Também exploro como agentes de IA podem se integrar a sistemas de
+          negócio, construindo provas de conceito com ferramentas como Google
+          ADK, MCP e Azure OpenAI Real-Time.
+        </p>
+      </div>
       <img
-        class="portrait"
+        class="home-portrait"
         src="https://github.com/flaviomdutra.png?size=400"
         alt="Flávio Dutra"
         width="240"
         height="240"
       />
-      <p class="prompt">
-        ~/home <span>$</span> whoami
-      </p>
-      <h1 class="intro-title">
-        Flávio Dutra<span class="accent">.</span>
-      </h1>
-      <p class="lead">
-        Sou engenheiro de software e arquiteto de soluções em São Paulo. Gosto
-        de construir sistemas distribuídos e entender como fazê-los funcionar
-        bem.
-      </p>
-      <p>
-        Há mais de 13 anos trabalho com desenvolvimento de software. Hoje, no
-        Bradesco, ajudo equipes a evoluir plataformas de recuperação de crédito
-        que conectam serviços em nuvem, sistemas locais e mainframes.
-      </p>
+    </section>
+
+    <section class="home-section" id="work">
+      <h2>Experiência e interesses</h2>
+      <div>
+        <p>
+          Trabalho com software há mais de 13 anos, com passagens por SYS4B,
+          Oracle e Cognizant. Ao longo desse caminho, atuei em desenvolvimento,
+          liderança técnica e arquitetura de sistemas distribuídos.
+        </p>
+        <p>
+          Tenho interesse em backend, arquitetura orientada a eventos e
+          integração de dados, especialmente nos desafios de evoluir sistemas
+          sem perder de vista o domínio e as pessoas que trabalham neles.
+        </p>
+      </div>
+    </section>
+
+    <section class="home-section home-writing">
+      <div>
+        <h2>Textos</h2>
+        <p>Notas e ideias práticas sobre construir software.</p>
+        <a class="home-text-link" href={`${base}blog/`}>
+          Todos os textos →
+        </a>
+      </div>
+      <article class="home-article">
+        <p class="home-eyebrow">Arquitetura</p>
+        <h3>
+          <a href={`${base}blog/microservice-coupling/`}>
+            Entendendo o acoplamento em microsserviços
+          </a>
+        </h3>
+        <p>
+          Uma visão prática sobre acoplamento de domínio, contrato e execução, e
+          como manter mudanças administráveis em sistemas distribuídos.
+        </p>
+        <a class="home-text-link" href={`${base}blog/microservice-coupling/`}>
+          Ler artigo →
+        </a>
+      </article>
+    </section>
+
+    <section class="home-section home-contact" id="contact">
+      <h2>Onde me encontrar</h2>
       <div class="social">
         <a href="https://github.com/flaviomdutra">GitHub ↗</a>
         <a href="https://www.linkedin.com/in/flaviomdutra/">LinkedIn ↗</a>
         <a href="https://instagram.com/flaviomdutra">Instagram ↗</a>
         <a href="mailto:flaviomdutra@outlook.com">Email ↗</a>
       </div>
-    </section>
-    <section id="about">
-      <p class="section-number">// 01</p>
-      <h2>O que você encontra aqui</h2>
-      <p>
-        Escrevo sobre arquitetura de software, desenvolvimento backend e
-        sistemas distribuídos. Também compartilho o que aprendo construindo
-        software.
-      </p>
-      <p>
-        Trabalho com Java, Spring Boot, Node.js, Kafka, Kubernetes e APIs. Tenho
-        interesse em arquitetura orientada a eventos, domain-driven design e
-        nuvem. Ultimamente, também venho explorando sistemas de IA e aplicações
-        conversacionais em tempo real.
-      </p>
-    </section>
-    <section id="work">
-      <p class="section-number">// 02</p>
-      <h2>Minha carreira</h2>
-      <p>
-        Ao longo da carreira, trabalhei como engenheiro de software, tech lead,
-        staff engineer e arquiteto de soluções. Gosto de participar das decisões
-        de arquitetura e de continuar próximo do código e das equipes.
-      </p>
-      <p>
-        No <strong>Bradesco</strong>, trabalho com plataformas de recuperação de
-        crédito e pagamentos. Isso envolve conectar APIs, eventos, dados e
-        sistemas legados, além de lidar com modernização, resiliência e
-        observabilidade.
-      </p>
-      <p>
-        Antes, na <strong>SYS4B</strong>, liderei iniciativas de arquitetura e
-        engenharia para plataformas corporativas, incluindo serviços orientados
-        a eventos e integrações. Trabalhei também na <strong>Oracle</strong> com
-        soluções escaláveis para grandes clientes e na{" "}
-        <strong>Cognizant</strong>, liderando integrações de sistemas
-        distribuídos. Anteriormente, desenvolvi software na CiriloCabos,
-        CoreBiz, Accenture e CORE 360º.
-      </p>
-      <p>
-        Estudei Análise e Desenvolvimento de Sistemas na FIAP e tenho
-        certificações Microsoft em arquitetura, administração, dados, segurança
-        e fundamentos do Azure. Meus projetos públicos estão no{" "}
-        <a class="inline" href="https://github.com/flaviomdutra">
-          GitHub
-        </a>
-        .
-      </p>
-    </section>
-    <section>
-      <p class="section-number">// 03</p>
-      <h2>Meu setup</h2>
-      <p>
-        Conheça meu ambiente de desenvolvimento e meus{" "}
-        <a class="inline" href="https://github.com/flaviomdutra/dotfiles">
-          dotfiles
-        </a>
-        .{" "}
-        <a class="inline" href={`${base}setup/`}>
-          Ver meu setup →
-        </a>
-      </p>
-    </section>
-    <section>
-      <p class="section-number">// 04</p>
-      <div class="section-title">
-        <h2>Textos</h2>
-        <a href={`${base}blog/`}>Todos os posts →</a>
-      </div>
-      <a class="post" href={`${base}blog/microservice-coupling/`}>
-        <span>Entendendo o acoplamento em microsserviços</span>
-        <span>Arquitetura →</span>
-      </a>
-      <p>
-        Acompanhe as novidades pelo{" "}
-        <a class="inline" href={`${base}rss.xml`}>
-          feed RSS
-        </a>
-        .
-      </p>
-    </section>
-    <section id="contact">
-      <p class="section-number">// 05</p>
-      <h2>Entre em contato</h2>
-      <p>
-        Você pode falar comigo pelo e-mail{" "}
-        <a class="inline" href="mailto:flaviomdutra@outlook.com">
-          flaviomdutra@outlook.com
-        </a>{" "}
-        ou se conectar comigo no{" "}
-        <a class="inline" href="https://www.linkedin.com/in/flaviomdutra/">
-          LinkedIn
-        </a>
-        .
-      </p>
     </section>
   </div>
 </Layout>
