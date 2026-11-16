@@ -51,4 +51,13 @@ another, think of autonomous services that collaborate to support a business
 journey or goal. Autonomy does not mean there are no dependencies: they should
 be explicit, limited, and well managed.
 
+<div class="article-tags">
+  <p class="article-tags-label">Tags</p>
+  <div class="post-tags" aria-label="Tags">
+    <span class="post-tag">Microservices</span>
+    <span class="post-tag">Software architecture</span>
+    <span class="post-tag">Distributed systems</span>
+  </div>
+</div>
+
 </div>

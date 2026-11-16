@@ -52,4 +52,13 @@ em um sistema como um quebra-cabeça de componentes que dependem fortemente uns
 dos outros, pense em serviços autônomos que colaboram para atender a uma jornada
 ou a um objetivo de negócio. Essa autonomia, porém, não significa ausência de
 dependências: elas precisam ser explícitas, limitadas e bem administradas.
+
+<div class="article-tags">
+  <p class="article-tags-label">Tags</p>
+  <div class="post-tags" aria-label="Tags">
+    <span class="post-tag">Microsserviços</span>
+    <span class="post-tag">Arquitetura de software</span>
+    <span class="post-tag">Sistemas distribuídos</span>
+  </div>
+</div>
 </div>

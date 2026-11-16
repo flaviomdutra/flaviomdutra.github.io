@@ -250,6 +250,13 @@ p {
   color: inherit;
 }
 
+.post-summary {
+  max-width: 68ch;
+  color: var(--subtle);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
 .post-tags {
   display: flex;
   flex-wrap: wrap;
@@ -262,6 +269,18 @@ p {
   padding: 3px 8px;
   color: var(--subtle);
   font-size: 11px;
+}
+
+.article-tags {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.article-tags-label {
+  margin: 0 0 10px;
+  color: var(--subtle);
+  font-size: 12px;
 }
 
 .footer {
