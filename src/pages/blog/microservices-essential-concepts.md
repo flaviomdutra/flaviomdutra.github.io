@@ -2,6 +2,10 @@
 layout: ../../layouts/Layout.astro
 title: Conceitos essenciais de microsserviços - Flávio Dutra
 description: Conceitos fundamentais para entender a arquitetura de microsserviços.
+listingTitle: Conceitos essenciais de microsserviços
+summary: Um panorama sobre autonomia dos serviços, limites de domínio, responsabilidade pelos dados e escolhas de comunicação.
+category: architecture
+pubDate: 2026-11-16
 tags:
   - microservices
   - software-architecture
@@ -52,13 +56,4 @@ em um sistema como um quebra-cabeça de componentes que dependem fortemente uns
 dos outros, pense em serviços autônomos que colaboram para atender a uma jornada
 ou a um objetivo de negócio. Essa autonomia, porém, não significa ausência de
 dependências: elas precisam ser explícitas, limitadas e bem administradas.
-
-<div class="article-tags">
-  <p class="article-tags-label">Tags</p>
-  <div class="post-tags" aria-label="Tags">
-    <span class="post-tag">Microsserviços</span>
-    <span class="post-tag">Arquitetura de software</span>
-    <span class="post-tag">Sistemas distribuídos</span>
-  </div>
-</div>
 </div>

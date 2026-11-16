@@ -9,10 +9,16 @@ Requires Node.js 22.23.4 or later. Run `npm ci`, then `npm run dev`. Run
 `npm run build` to create the static site.
 
 Edit the home page in `src/pages/index.astro`, the shared navigation in
-`src/layouts/Layout.astro`, and the journal in `src/pages/blog/`. Update the RSS
-entries in `src/pages/rss.xml.js` when publishing articles. Add your email
-address if desired and replace the example project descriptions with your real
-projects.
+`src/layouts/Layout.astro`, and the journal in `src/pages/blog/`. Blog listings,
+the three recent articles on each home page, article tags, and the RSS feed are
+generated from Markdown frontmatter.
+
+To publish a blog post, add matching Markdown files to `src/pages/blog/` and
+`src/pages/en/blog/`. Include `listingTitle`, `summary`, `category`, `pubDate`,
+and `tags` in each file's frontmatter. The filename becomes the URL slug. The
+blog pages, home highlights, and RSS feed update automatically during the build.
+Add your email address if desired and replace the example project descriptions
+with your real projects.
 
 ## GitHub Pages
 
@@ -27,5 +33,5 @@ in GitHub Pages.
 
 Portuguese is the default language; English pages live under `/en/`. The
 language switch links equivalent pages, so add matching routes in both languages
-when adding a page or blog post, and update both blog listings. The switch
-assumes that a matching route exists in the other language.
+when adding a page or blog post. The switch assumes that a matching route exists
+in the other language.

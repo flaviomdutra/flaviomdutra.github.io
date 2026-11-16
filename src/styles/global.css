@@ -545,6 +545,11 @@ td {
   padding-left: 24px;
 }
 
+.home-writing-list {
+  display: grid;
+  gap: 24px;
+}
+
 .home-article .home-eyebrow {
   margin-bottom: 8px;
 }

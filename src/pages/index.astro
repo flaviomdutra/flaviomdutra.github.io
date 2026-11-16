@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getBlogPosts, getCategoryLabel } from "../data/blog";
 const base = import.meta.env.BASE_URL;
+const recentPosts = getBlogPosts("pt").slice(0, 3);
 ---
 
 <Layout>
@@ -56,21 +58,20 @@ const base = import.meta.env.BASE_URL;
           Todos os textos →
         </a>
       </div>
-      <article class="home-article">
-        <p class="home-eyebrow">Arquitetura</p>
-        <h3>
-          <a href={`${base}blog/microservice-coupling/`}>
-            Entendendo o acoplamento em microsserviços
-          </a>
-        </h3>
-        <p>
-          Uma visão prática sobre acoplamento de domínio, contrato e execução, e
-          como manter mudanças administráveis em sistemas distribuídos.
-        </p>
-        <a class="home-text-link" href={`${base}blog/microservice-coupling/`}>
-          Ler artigo →
-        </a>
-      </article>
+      <div class="home-writing-list">
+        {recentPosts.map((post) => (
+          <article class="home-article">
+            <p class="home-eyebrow">{getCategoryLabel(post.category, "pt")}</p>
+            <h3>
+              <a href={`${base}blog/${post.slug}/`}>{post.title}</a>
+            </h3>
+            <p>{post.summary}</p>
+            <a class="home-text-link" href={`${base}blog/${post.slug}/`}>
+              Ler artigo →
+            </a>
+          </article>
+        ))}
+      </div>
     </section>
 
     <section class="home-section home-contact" id="contact">

@@ -2,6 +2,10 @@
 layout: ../../../layouts/Layout.astro
 title: Essential Microservices Concepts - Flávio Dutra
 description: Fundamental concepts for understanding microservices architecture.
+listingTitle: Essential microservices concepts
+summary: An overview of service autonomy, domain boundaries, data ownership, and communication choices.
+category: architecture
+pubDate: 2026-11-16
 tags:
   - microservices
   - software-architecture
@@ -50,14 +54,5 @@ thinking of a system as a puzzle of components that depend heavily on one
 another, think of autonomous services that collaborate to support a business
 journey or goal. Autonomy does not mean there are no dependencies: they should
 be explicit, limited, and well managed.
-
-<div class="article-tags">
-  <p class="article-tags-label">Tags</p>
-  <div class="post-tags" aria-label="Tags">
-    <span class="post-tag">Microservices</span>
-    <span class="post-tag">Software architecture</span>
-    <span class="post-tag">Distributed systems</span>
-  </div>
-</div>
 
 </div>

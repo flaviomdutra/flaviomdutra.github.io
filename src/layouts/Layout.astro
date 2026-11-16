@@ -14,6 +14,16 @@ const {
     ? "Flávio Dutra — projects, notes, and ideas."
     : "Flávio Dutra — projetos, notas e ideias.",
 } = Astro.props;
+const articleTags = Astro.props.tags ?? Astro.props.frontmatter?.tags ?? [];
+const tagLabels = {
+  microservices: isEnglish ? "Microservices" : "Microsserviços",
+  "software-architecture": isEnglish
+    ? "Software architecture"
+    : "Arquitetura de software",
+  "distributed-systems": isEnglish
+    ? "Distributed systems"
+    : "Sistemas distribuídos",
+};
 ---
 
 <!doctype html>
@@ -101,6 +111,16 @@ const {
     </script>
     <main id="main">
       <slot />
+      {articleTags.length > 0 && (
+        <div class="wrap prose article-tags">
+          <p class="article-tags-label">Tags</p>
+          <div class="post-tags" aria-label="Tags">
+            {articleTags.map((tag: string) => (
+              <span class="post-tag">{tagLabels[tag] ?? tag.replaceAll("-", " ")}</span>
+            ))}
+          </div>
+        </div>
+      )}
     </main>
     <footer class="wrap footer">
       <span>© {new Date().getFullYear()} Flávio Dutra</span>

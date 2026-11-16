@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { getBlogPosts, getCategoryLabel } from "../../data/blog";
 const base = `${import.meta.env.BASE_URL}en/`;
+const recentPosts = getBlogPosts("en").slice(0, 3);
 ---
 
 <Layout>
@@ -56,21 +58,20 @@ const base = `${import.meta.env.BASE_URL}en/`;
           All writing →
         </a>
       </div>
-      <article class="home-article">
-        <p class="home-eyebrow">Architecture</p>
-        <h3>
-          <a href={`${base}blog/microservice-coupling/`}>
-            Understanding coupling in microservices
-          </a>
-        </h3>
-        <p>
-          A practical look at domain, contract, and runtime coupling, and how to
-          keep changes manageable in distributed systems.
-        </p>
-        <a class="home-text-link" href={`${base}blog/microservice-coupling/`}>
-          Read article →
-        </a>
-      </article>
+      <div class="home-writing-list">
+        {recentPosts.map((post) => (
+          <article class="home-article">
+            <p class="home-eyebrow">{getCategoryLabel(post.category, "en")}</p>
+            <h3>
+              <a href={`${base}blog/${post.slug}/`}>{post.title}</a>
+            </h3>
+            <p>{post.summary}</p>
+            <a class="home-text-link" href={`${base}blog/${post.slug}/`}>
+              Read article →
+            </a>
+          </article>
+        ))}
+      </div>
     </section>
 
     <section class="home-section home-contact" id="contact">
