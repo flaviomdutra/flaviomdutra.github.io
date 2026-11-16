@@ -2,6 +2,10 @@
 layout: ../../layouts/Layout.astro
 title: Conceitos essenciais de microsserviços - Flávio Dutra
 description: Conceitos fundamentais para entender a arquitetura de microsserviços.
+tags:
+  - microservices
+  - software-architecture
+  - distributed-systems
 ---
 
 <div class="wrap page prose">

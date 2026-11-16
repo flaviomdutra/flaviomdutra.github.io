@@ -2,6 +2,10 @@
 layout: ../../../layouts/Layout.astro
 title: Essential Microservices Concepts - Flávio Dutra
 description: Fundamental concepts for understanding microservices architecture.
+tags:
+  - microservices
+  - software-architecture
+  - distributed-systems
 ---
 
 <div class="wrap page prose">

@@ -236,9 +236,32 @@ p {
   font-size: 14px;
 }
 
-.post span:last-child {
+.post-category {
   font-size: 12px;
   color: var(--subtle);
+}
+
+.post-content {
+  display: grid;
+  gap: 10px;
+}
+
+.post-title {
+  color: inherit;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.post-tag {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 8px;
+  color: var(--subtle);
+  font-size: 11px;
 }
 
 .footer {
